@@ -40,7 +40,7 @@ signals:
     
 public slots:
 
-    void slot_log( const QString &description , qp_gui::LOG_STYLE style );
+    void slot_log( const QString &description , qp::gui::LOG_STYLE style );
 
     void slot_finished(QString str, bool error); // default values are just in sig_finish
 

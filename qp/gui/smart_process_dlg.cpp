@@ -7,9 +7,9 @@
 #include <QUrl>
 #include <QScrollBar>
 #include "../../qp/gui/qp_gui.h"
-//#include "my_lib/pbltableview/pbl.h"
 #include <QMetaMethod>
 #include <QMessageBox>
+#include "qp/qp.h"
 
 
 
@@ -57,8 +57,8 @@ Smart_Process_Dlg::Smart_Process_Dlg( QWidget *parent,
                                        QString("error: connecting signal(sig_finished ) / slot (slot_finished)")
                                    );
 
-        bbb = connect( obj , SIGNAL( sig_log(QString , qp_gui::LOG_STYLE)),
-                       this , SLOT( slot_log(QString , qp_gui::LOG_STYLE)));
+        bbb = connect( obj , SIGNAL( sig_log(QString , qp::gui::LOG_STYLE)),
+                       this , SLOT( slot_log(QString , qp::gui::LOG_STYLE)));
 
         if( ! bbb )
             QMessageBox::critical( this ,
@@ -269,10 +269,10 @@ void Smart_Process_Dlg::slot_finished( QString description ,
 
 }
 
-void Smart_Process_Dlg::slot_log( const QString &description , qp_gui::LOG_STYLE style )
+void Smart_Process_Dlg::slot_log( const QString &description , qp::gui::LOG_STYLE style )
 {
 
-    //qWarning() <<"Smart_Process_Dlg::void Smart_Process_Dlg::slot_log( const QString &description , qp_gui::LOG_STYLE style ) "<<description << error;
+    //qWarning() <<"Smart_Process_Dlg::void Smart_Process_Dlg::slot_log( const QString &description , qp::gui::LOG_STYLE style ) "<<description << error;
 
 
     if( ! description.isEmpty() ) // message or error
@@ -285,7 +285,7 @@ void Smart_Process_Dlg::slot_log( const QString &description , qp_gui::LOG_STYLE
 
         QString txt = ui->lbl_text2->text();
 
-        txt.append("<p style=\""+ qp_gui::styleToHtmlAttr( style ) +"\">"+description2+"</p>");
+        txt.append("<p style=\""+ qp::gui::styleToHtmlAttr( style ) +"\">"+description2+"</p>");
 
 
         ui->lbl_text2->setText( txt);

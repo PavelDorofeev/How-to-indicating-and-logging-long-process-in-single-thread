@@ -3,16 +3,9 @@
 
 #include <QWidget>
 
-// --------------------------------------------------------------------------------------
-Q_CORE_EXPORT void qt_assert(const char *assertion, const char *file, int line);
-
-//  our QP_ASSERT run in release building too !!!
-#if !defined(QP_ASSERT)
-#    define QP_ASSERT(cond) ((!(cond)) ? qt_assert(#cond,__FILE__,__LINE__) : qt_noop())
-#endif
-// --------------------------------------------------------------------------------------
-
-namespace qp_gui
+namespace qp
+{
+namespace gui
 {
 
     enum LOG_STYLE{
@@ -37,5 +30,12 @@ bool call_slot(
         bool closeWindowOnFinish = true
         );
 
+void setWindow_woTitle(QWidget * wgt);
+void setWindow_woFrame(QWidget * wgt);
+void setWindow_woToolsBtn(QWidget * wgt);
+void setWindow_woTitle__woFrame_woToolsBtn(QWidget * wgt);
+void setWindow_woTitle__woFrame_woToolsBtn2(QWidget * wgt);
+
+}
 }
 #endif // QP_GUI_H
